@@ -1,0 +1,15 @@
+# Virtual Env
+/.env/
+
+# Python
+__pycache__/
+
+# MacOS
+.DS_Store
+
+# JetBrains
+.idea
+
+datasets/
+
+input/
