@@ -13,17 +13,19 @@ if __name__ == '__main__':
 
     model_wind, model_pv = fit_linear_regression(dataset=dataset)
 
+    print("-------------")
+
     # wind_speed : m/s
     # electricity : kW; max : 1kW
-    wind_data = [[8.]]
+    wind_data = [[8]]
     wind_prediction = model_wind.predict(wind_data)
 
-    print(wind_prediction)
+    print("Wind data :", wind_data, "; Prediction :", wind_prediction)
 
     # irradiance_direct : kW/m²
     # irradiance_diffuse : kW/m²
     # electricity : kW; max : 1kW
-    # pv_data = [[0.4, 0.3]]
-    # pv_prediction = model_wind.predict(pv_data)
-    #
-    # print(pv_prediction)
+    pv_data = [[0.4, 0.3]]
+    pv_prediction = model_pv.predict(pv_data)
+
+    print("PV data :", pv_data, "; Prediction :", pv_prediction)
