@@ -64,7 +64,7 @@ def fit_gradient_boosting_regression(dataset):
     return model_wind, model_pv
 
 
-def daily_predict(model_wind, model_solar, daily_data, max_power=1):
+def daily_predict(model_wind, model_solar, daily_data, max_power_wind=1, max_power_solar=1):
     predictions = {
         "wind": {
             "00h": 0,
@@ -100,10 +100,10 @@ def daily_predict(model_wind, model_solar, daily_data, max_power=1):
     array_key = ["00h", "06h", "12h", "18h"]
 
     for idx, prediction in enumerate(predictions_wind):
-        predictions['wind'][array_key[idx]] = prediction*max_power
+        predictions['wind'][array_key[idx]] = prediction*max_power_wind
 
     for idx, prediction in enumerate(predictions_solar):
-        predictions['solar'][array_key[idx]] = prediction*max_power
+        predictions['solar'][array_key[idx]] = prediction*max_power_solar
 
     return predictions
 
