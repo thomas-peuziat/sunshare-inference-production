@@ -1,0 +1,1 @@
+{"wind": {"00h": {"wind_speed": 3.4}, "06h": {"wind_speed": 2.4}, "12h": {"wind_speed": 8.4}, "18h": {"wind_speed": 0.0}}, "solar": {"00h": {"irradiance_direct": 0.4, "irradiance_diffuse": 0.5}, "06h": {"irradiance_direct": 0.3, "irradiance_diffuse": 0.8}, "12h": {"irradiance_direct": 0.0, "irradiance_diffuse": 0.1}, "18h": {"irradiance_direct": 0.1, "irradiance_diffuse": 0.2}}}
