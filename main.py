@@ -2,6 +2,7 @@
 # https://medium.com/hugo-ferreiras-blog/predicting-wind-and-solar-generation-from-weather-data-using-machine-learning-998d7db8415e
 
 import os
+from pprint import pprint
 
 from utils import data, parser
 
@@ -24,3 +25,5 @@ if __name__ == '__main__':
     predictions = data.daily_predict(model_wind=model_wind_gb, model_solar=model_pv_gb, daily_data=daily_data,
                                      max_power=MAX_POWER)
     parser.write_output(predictions=predictions)
+
+    pprint(predictions)
