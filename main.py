@@ -13,8 +13,8 @@ if __name__ == '__main__':
 
     # model_wind_LR, model_pv_LR = fit_linear_regression(dataset=dataset)
     # model_wind_GB, model_pv_GB = fit_gradient_boosting_regression(dataset=dataset)
-    # fit_linear_regression(dataset=dataset)
-    # fit_gradient_boosting_regression(dataset=dataset)
+    fit_linear_regression(dataset=dataset)
+    fit_gradient_boosting_regression(dataset=dataset)
 
     predict_model(os.path.join('models', 'model_wind_lr.joblib'), os.path.join('models', 'model_pv_lr.joblib'))
 
