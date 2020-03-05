@@ -1,13 +1,12 @@
+import os
+
 import numpy as np
 import pandas as pd
+from joblib import dump, load
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import make_scorer, r2_score
 from sklearn.model_selection import cross_val_score
-from sklearn.ensemble import GradientBoostingRegressor
-from matplotlib import pyplot as plt
-import pickle
-from joblib import dump, load
-import os
 
 
 def init_dataset(pv_dataset_path: str, wind_dataset_path: str):
@@ -141,23 +140,6 @@ def fit_linear_regression(dataset):
     return model_wind, model_pv
 
 
-def predict_model(model_wind_path, model_pv_path):
-    # model_wind, model_pv = fit_gradient_boosting_regression(dataset=dataset)
+def load_model(model_wind_path, model_pv_path):
+    return load(model_wind_path), load(model_pv_path)
 
-    print("-------------")
-    model_wind = load(model_wind_path)
-    # wind_speed : m/s
-    # electricity : kW; max : 1kW
-    wind_data = [[8]]
-    wind_prediction = model_wind.predict(wind_data)
-
-    print("Wind data :", wind_data, "; Prediction :", wind_prediction)
-
-    model_pv = load(model_pv_path)
-    # irradiance_direct : kW/m²
-    # irradiance_diffuse : kW/m²
-    # electricity : kW; max : 1kW
-    pv_data = [[0.4, 0.3]]
-    pv_prediction = model_pv.predict(pv_data)
-
-    print("PV data :", pv_data, "; Prediction :", pv_prediction)

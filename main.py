@@ -12,17 +12,15 @@ if __name__ == '__main__':
 
     dataset = data.init_dataset(pv_dataset_path=pv_dataset_path, wind_dataset_path=wind_dataset_path)
 
-    model_wind, model_pv = data.fit_linear_regression(dataset=dataset)
+    # model_wind_lr, model_pv_lr = data.fit_linear_regression(dataset=dataset)
+    # model_wind_gb, model_pv_gb = data.fit_gradient_boosting_regression(dataset=dataset)
 
-    print("-------------")
-    # model_wind_LR, model_pv_LR = fit_linear_regression(dataset=dataset)
-    # model_wind_GB, model_pv_GB = fit_gradient_boosting_regression(dataset=dataset)
-    fit_linear_regression(dataset=dataset)
-    fit_gradient_boosting_regression(dataset=dataset)
+    model_wind_lr, model_pv_lr = data.load_model(os.path.join('models', 'model_wind_lr.joblib'),
+                                                 os.path.join('models', 'model_pv_lr.joblib'))
+    model_wind_gb, model_pv_gb = data.load_model(os.path.join('models', 'model_wind_gb.joblib'),
+                                                 os.path.join('models', 'model_pv_gb.joblib'))
 
     daily_data = parser.parse_input(json_path=os.path.join('input', 'input_example.json'))
-    predictions = data.daily_predict(model_wind=model_wind, model_solar=model_pv, daily_data=daily_data, max_power=MAX_POWER)
+    predictions = data.daily_predict(model_wind=model_wind_gb, model_solar=model_pv_gb, daily_data=daily_data,
+                                     max_power=MAX_POWER)
     parser.write_output(predictions=predictions)
-    predict_model(os.path.join('models', 'model_wind_lr.joblib'), os.path.join('models', 'model_pv_lr.joblib'))
-
-    predict_model(os.path.join('models', 'model_wind_gb.joblib'), os.path.join('models', 'model_pv_gb.joblib'))
